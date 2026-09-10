@@ -1,0 +1,40 @@
+application:
+  subdomain: sunshine
+  background_task: true
+  multi_instance: false
+  gpu_accel: true
+  upstreams:
+    - location: /
+      backend: https://sunshine:47990/
+      disable_backend_ssl_verify: true
+  ingress:
+    - protocol: tcp
+      publish_port: 47984-47990
+      service: sunshine
+      description: Moonlight TCP and Sunshine management
+    - protocol: tcp
+      port: 48010
+      service: sunshine
+      description: Moonlight RTSP
+    - protocol: udp
+      publish_port: 47998-48000
+      service: sunshine
+      description: Moonlight audio, video and control
+services:
+  sunshine:
+    # upstream: docker.io/lizardbyte/sunshine:v2026.909.201822-ubuntu-26.04
+    image: docker.1ms.run/lizardbyte/sunshine:v2026.909.201822-ubuntu-26.04
+    run_as: "1001:1001"
+    environment:
+      - PUID=1001
+      - PGID=1001
+      - TZ=Asia/Shanghai
+    binds:
+      - /lzcapp/var/config:/home/lizard/.config/sunshine
+usage: |
+  打开应用进入 Sunshine 自带的 HTTPS 管理后台，首次使用请创建登录凭据，并在后台完成 Moonlight 配对。
+  此包使用官方 Ubuntu 26.04 镜像，提供串流主机服务，不包含完整桌面、Steam 或游戏。
+  可用串流需要实际可捕获的显示会话、音频源和输入设备。GPU 可见并不代表桌面或音频已配置完成。
+  Moonlight 中手动添加 Sunshine 应用域名；Web 入口用于配置，Moonlight 使用单独的 TCP/UDP 串流端口。
+  配置持久化在 /lzcapp/var/config，映射至镜像 /config 符号链接指向的真实目录。
+  保留手动登录，不注入文件选择器。硬件编码、桌面捕获、音频及输入需要在实际微服上验证。

@@ -1,0 +1,7 @@
+manifest: ./lzc-manifest.yml
+pkgout: ./dist
+icon: ./icon.png
+compose_override:
+  services:
+    sunshine:
+      ipc: host

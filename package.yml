@@ -1,0 +1,15 @@
+package: community.lazycat.app.sunshine
+version: 2026.909.201822
+name: Sunshine
+description: Sunshine is a self-hosted game stream host for Moonlight. Offering low latency, cloud gaming server capabilities with support for AMD, Intel, and Nvidia GPUs for hardware encoding. Software encoding is also available. You can connect to Sunshine from any Moonlight client on a variety of devices. A web UI is provided to allow configuration, and client pairing, from your favorite web browser. Pair from the local server or any mobile device.
+homepage: https://app.lizardbyte.dev/Sunshine/
+author: LizardByte
+license: GPL-3.0
+min_os_version: 1.6.0
+locales:
+  zh:
+    name: Sunshine
+    description: 面向 Moonlight 的自托管低延迟游戏串流主机，支持 AMD、Intel、NVIDIA 硬件编码和软件编码，提供 Web 配置与客户端配对界面。
+  en:
+    name: Sunshine
+    description: A self-hosted low-latency game streaming host for Moonlight with hardware and software encoding, web configuration and client pairing.
