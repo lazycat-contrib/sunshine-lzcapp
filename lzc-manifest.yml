@@ -22,8 +22,8 @@ application:
       description: Moonlight audio, video and control
 services:
   sunshine:
-    # upstream: docker.io/lizardbyte/sunshine:v2026.911.165624-ubuntu-26.04
-    image: docker.1ms.run/lizardbyte/sunshine:v2026.911.165624-ubuntu-26.04
+    # upstream: docker.io/lizardbyte/sunshine:v2026.912.143204-ubuntu-26.04
+    image: docker.1ms.run/lizardbyte/sunshine:v2026.912.143204-ubuntu-26.04
     run_as: "1001:1001"
     environment:
       - PUID=1001
